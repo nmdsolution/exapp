@@ -9,7 +9,7 @@ use Flowframe\Trend\TrendValue;
 
 class ExpeditionChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart Des Colis envoiyez';
+    protected static ?string $heading = 'Chart Des Colis envoyez';
 
     protected function getData(): array
     {

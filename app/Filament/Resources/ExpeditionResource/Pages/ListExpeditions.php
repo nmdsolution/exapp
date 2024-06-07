@@ -35,7 +35,7 @@ class ListExpeditions extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->label('Envoiyez vos colis')->icon('heroicon-o-truck'),
+            Actions\CreateAction::make()->label('Envoiyez Vos colis')->icon('heroicon-o-truck'),
 
         ];
 

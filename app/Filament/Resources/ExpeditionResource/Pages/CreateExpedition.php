@@ -16,7 +16,7 @@ class CreateExpedition extends CreateRecord
     protected function getRedirectUrl(): string
     {
         return route('generate-pdf', $this->record->id);
-    }
+        }         
     protected function getCreatedNotificationTitle(): ?string
     {
         return 'Colis envoiyer';

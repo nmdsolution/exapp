@@ -4,9 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ExpeditionResource\Pages;
 use App\Filament\Resources\ExpeditionResource\RelationManagers;
-use App\Models\bus;
+use App\Models\Bus;
 use App\Models\Expedition;
-use App\Models\location;
+use App\Models\Location;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Exports\Enums\ExportFormat;
@@ -73,63 +73,74 @@ class ExpeditionResource extends Resource
                             Select::make('bus_id')
                                 ->label('Bus')
                                 ->required()
-                                ->options( bus::all()->pluck('nom', 'id')),
+                                ->options( bus::all()->pluck('nom', 'id'))->native(false),
                             Select::make('from_location')
                                 ->label('Agence de Depart')
                                 ->required()
-                                ->options( location::all()->pluck('point darret','point darret')),
+                                 ->native(false)                             
+                                 ->options( location::all()->pluck('point darret','point darret')),
                             select::make('to_location')
                                 ->label('Agence Destination')
-                                ->options( location::all()->pluck('point darret','point darret'))
+                                 ->native(false)                        
+                                 ->options( location::all()->pluck('point darret','point darret'))
                                 ->required(),
                             TextInput::make('name')
                                 ->label('Description du Colis')
                                 ->required()
-                                ->maxLength(255),
+                               
+                                 ->maxLength(255),
                             TextInput::make('qty')
                                 ->label('Nombre de Colis')
                                 ->required()
                                 ->numeric()
-                                ->tel(),
+                                //->native(false)                      
+                                 ->tel(),
                             TextInput::make('valeur')
                                 ->label('Valeur du Colis')
                                 ->required()
                                 ->tel()
                                 ->numeric()
-                                ->prefix('FCFA'),
+                                // ->native(false)                         
+                                 ->prefix('FCFA'),
                             TextInput::make('prix')
                                 ->label('Frais denvoi')
                                 ->required()
                                 ->numeric()
                                 ->tel()
-                                ->prefix('FCFA'),
+                                 //->native(false) 
+                                 ->prefix('FCFA'),
                             TextInput::make('expeditair')
                                 ->label('Expéditeur')
                                 ->required()
                                 ->maxLength(255)
                                 ->prefixIcon('heroicon-o-user')
-                                ->prefixIconColor('blue'),
+                                 //->native(false) 
+                                 ->prefixIconColor('blue'),
                             TextInput::make('tel_expeditair')
                                 ->label('Numero Expéditeur')
                                 ->tel()
                                 ->required()
-                                ->maxLength(255)
+                                 //->native(false) 
+                                 ->maxLength(255)
                                 ->prefixIcon('heroicon-o-phone'),
                             TextInput::make('destinatair')
                                 ->label('Recepteur')
                                 ->required()
                                 ->maxLength(255)
-                                ->prefixIcon('heroicon-o-user'),
+                                // ->native(false) 
+                                 ->prefixIcon('heroicon-o-user'),
                             TextInput::make('tel_destinatair')
                                 ->label('Numero du Recepteur')
                                 ->tel()
                                 ->required()
-                                ->maxLength(255)
+                               //  ->native(false) 
+                                 ->maxLength(255)
                                 ->prefixIcon('heroicon-o-phone'),
                             TextInput::make('agent')
                                 ->disabled()
                                 ->required()
-                                ->dehydrated()
+                               //  ->native(false) 
+                                 ->dehydrated()
                                 ->default(Auth::user()->name),
                             Select::make('status')
                                 ->options([
@@ -139,7 +150,8 @@ class ExpeditionResource extends Resource
                                 ->native(false)
                                 ->required(),
                             Select::make('recu')
-                                ->label('reçu')
+                                 ->native(false) 
+                                 ->label('reçu')
                                 ->options([
                                     'reçu' => 'reçu',
                                     'en attente' => 'en attente',

@@ -35,13 +35,13 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
 
-            ->brandName('Argence de Transport')
+            ->brandName('Argence de Transport REAL EXPRESS')
 
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
-            //->registration(Register::class)
+            ->login(CustomLogin::class)
+            //->registration()
             ->profile()
 
             ->userMenuItems([
@@ -68,7 +68,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+              //  Widgets\AccountWidget::class,
                 ExpeditionChart::class,
 
             ])
